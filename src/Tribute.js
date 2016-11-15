@@ -11,9 +11,10 @@ export default class Tribute extends Component {
     children: node,
     onChange: func,
     options: shape({
+      collections: arrayOf(arrayOf(object)),
       values: arrayOf(object),
       lookup: func,
-    })
+    }).required,
   }
 
   static defaultProps = {

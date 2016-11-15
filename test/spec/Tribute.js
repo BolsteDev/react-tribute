@@ -39,16 +39,4 @@ describe('<Tribute />', () => {
       </Tribute>
     )).to.throw('[Tribute] Cannot bind to DIV');
   });
-
-  it.skip('provides mentioning in the input field', () => {
-    expect(true).to.be.equal(false);
-  });
-
-  it.skip('uses containers if the content is scrollable', () => {
-    expect(true).to.be.equal(false);
-  });
-
-  it.skip('calls changed when a mention is selected without using enter', () => {
-    expect(true).to.be.equal(false);
-  });
 });
