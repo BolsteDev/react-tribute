@@ -7,7 +7,7 @@ const { arrayOf, func, node, object, shape } = PropTypes;
 
 export default class Tribute extends Component {
   static propTypes = {
-    customRefs: func,
+    customRef: func,
     children: node,
     onChange: func,
     options: shape({
@@ -22,13 +22,26 @@ export default class Tribute extends Component {
 
   children = []
   listeners = []
+  tribute = null
 
   componentDidMount() {
     this.bindToChildren();
   }
 
   componentDidUpdate() {
-    this.bindToChildren();
+    if (this.tribute) {
+      // TODO handle the case where other options have changed
+
+      if (this.props.options.values) {
+        this.tribute.append(0, this.props.options.values, true /* replace */);
+      } else if (this.props.options.collections) {
+        this.props.options.collections.forEach((collection, index) => {
+          this.tribute.append(index, collection, true /* replace */);
+        });
+      }
+    } else {
+      this.bindToChildren();
+    }
   }
 
   shouldComponentUdpdate(nextProps) {
@@ -36,9 +49,9 @@ export default class Tribute extends Component {
   }
 
   bindToChildren = () => {
-    const { customRefs, options } = this.props;
+    const { customRef, options } = this.props;
 
-    (customRefs ? customRefs() : this.children).forEach((child) => {
+    (customRef ? [customRef()] : this.children).forEach((child) => {
       const node = ReactDOM.findDOMNode(child);
 
       const t = new TributeJS({
@@ -46,6 +59,8 @@ export default class Tribute extends Component {
       });
 
       t.attach(node);
+
+      this.tribute = t;
 
       const listener = this.handleTributeReplaced.bind(this);
       node.addEventListener(
@@ -61,7 +76,7 @@ export default class Tribute extends Component {
   }
 
   render() {
-    const { children, options: _, ...props } = this.props;
+    const { children, options: _, customRef: __, onChange: ___, ...props } = this.props;
 
     return (
       <div {...props}>

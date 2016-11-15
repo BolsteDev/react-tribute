@@ -14,13 +14,18 @@ export default class DynamicTributeExample extends Component {
     const lastName = faker.name.lastName();
     const slug = firstName.toLowerCase();
 
-    console.log(`Adding ${firstName} ${lastName}`)
     this.setState({
       values: [...this.state.values, {
         first_name: firstName,
         last_name: lastName,
         slug,
       }],
+    });
+  }
+
+  removeUser = (index) => {
+    this.setState({
+      values: [...this.state.values.slice(0, index), ...this.state.values.slice(index + 1, this.state.values.length)],
     });
   }
 
@@ -39,6 +44,21 @@ export default class DynamicTributeExample extends Component {
               <textarea placeholder="Try to @mention someone…"></textarea>
             </Tribute>
             <button className="button" onClick={this.addUser}>Add another user</button>
+            <ul>
+              {this.state.values.map((value, index) => (
+                <li key={index}>
+                  {value.first_name} {value.last_name}
+                  {' '}
+                  <button
+                    onClick={this.removeUser.bind(this, index)}
+                    type="button"
+                    className="alert button"
+                  >
+                    Delete
+                  </button>
+                </li>
+              ))}
+            </ul>
             <div className="callout">
               <pre>
               {

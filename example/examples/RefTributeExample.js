@@ -11,10 +11,9 @@ export default class RefTributeExample extends Component {
         <div className="large-8 columns">
           <div className="callout large">
             <h3>Tribute on nested textareas:</h3>
-            <p>If you have a nested textarea, you can use custom refs to indicate
-              which component to bind to. Remember that customRefs expects you to
-              return an array of refs.</p>
-            <Tribute options={options} customRefs={() => { return [this.refs.textarea]; }}>
+            <p>If you have a nested textarea, you can use custom ref to indicate
+              which component to bind to.</p>
+            <Tribute options={options} customRef={() => { return this.refs.textarea; }}>
               <div style={{ padding: '20px', backgroundColor: '#333' }}>
                 <div>
                   <TextArea ref="textarea" placeholder="Try to @mention someone…"></TextArea>
@@ -28,7 +27,7 @@ export default class RefTributeExample extends Component {
 
 // ...
 
-<Tribute options={options} customRefs={() => { return [this.refs.textarea]; }}>
+<Tribute options={options} customRef={() => { return this.refs.textarea; }}>
   <div style={{ padding: '20px', backgroundColor: '#333' }}>
     <div>
       <TextArea ref="textarea"></TextArea>
