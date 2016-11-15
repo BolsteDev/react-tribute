@@ -6,6 +6,7 @@ import ControlledTributeExample from './examples/ControlledTributeExample';
 import CustomTributeExample from './examples/CustomTributeExample';
 import RefTributeExample from './examples/RefTributeExample';
 import DynamicDataTributeExample from './examples/DynamicDataTributeExample';
+import PromiseDataTributeExample from './examples/PromiseDataTributeExample';
 
 import Tribute from '../src/Tribute';
 
@@ -26,6 +27,7 @@ class Example extends Component {
         <CustomTributeExample />
         <RefTributeExample />
         <DynamicDataTributeExample />
+        <PromiseDataTributeExample />
       </div>
     );
   }
