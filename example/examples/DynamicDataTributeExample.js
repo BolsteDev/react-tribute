@@ -18,6 +18,7 @@ export default class DynamicTributeExample extends Component {
       values: [...this.state.values, {
         first_name: firstName,
         last_name: lastName,
+        fullName: `${firstName} ${lastName}`,
         slug,
       }],
     });

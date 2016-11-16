@@ -3186,10 +3186,6 @@ traverse@^0.6.6:
   version "0.6.6"
   resolved "https://registry.yarnpkg.com/traverse/-/traverse-0.6.6.tgz#cbdf560fd7b9af632502fed40f918c157ea97137"
 
-tributejs:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/tributejs/-/tributejs-2.0.6.tgz#34e3a569ebb845e16d3787df62206f80dde0a7d7"
-
 tty-browserify@0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.0.tgz#a157ba402da24e9bf957f9aa69d524eed42901a6"

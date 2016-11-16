@@ -12,9 +12,7 @@
   },
   "author": "Ivan Montiel <imontiel@bolste.com> (https://github.com/imontiel)",
   "license": "MIT",
-  "dependencies": {
-    "tributejs": "^2.0.6"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-loader": "^6.2.7",
@@ -34,6 +32,7 @@
     "react-addons-test-utils": "^15.3.2",
     "react-dom": "^15.0.0",
     "react-textarea-autosize": "^4.0.5",
+    "tributejs": "git://github.com/zurb/tribute.git#bf61c7af2f019150d76a18c1042594df82178bd6",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
   },
