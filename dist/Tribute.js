@@ -64,11 +64,17 @@ var Tribute = function (_Component) {
       var realOptions = _extends({}, options);
 
       if (typeof options.menuContainer === 'function') {
-        realOptions.menuContainer = _reactDom2['default'].findDOMNode(options.menuContainer());
+        var _node = options.menuContainer();
+
+        if (_node instanceof _react.Component) {
+          realOptions.menuContainer = _reactDom2['default'].findDOMNode(_node);
+        } else {
+          realOptions.menuContainer = _node;
+        }
       }
 
       (customRef ? [customRef()] : _this.children).forEach(function (child) {
-        var node = _reactDom2['default'].findDOMNode(child);
+        var node = child instanceof _react.Component ? _reactDom2['default'].findDOMNode(child) : child;
 
         var t = new _tributejs2['default'](_extends({}, realOptions));
 

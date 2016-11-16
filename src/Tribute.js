@@ -68,7 +68,7 @@ export default class Tribute extends Component {
     }
 
     (customRef ? [customRef()] : this.children).forEach((child) => {
-      const node = ReactDOM.findDOMNode(child);
+      const node = child instanceof Component ? ReactDOM.findDOMNode(child) : child;
 
       const t = new TributeJS({
         ...realOptions,
