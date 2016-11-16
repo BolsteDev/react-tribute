@@ -38,6 +38,7 @@ var arrayOf = _react.PropTypes.arrayOf,
     func = _react.PropTypes.func,
     node = _react.PropTypes.node,
     object = _react.PropTypes.object,
+    oneOfType = _react.PropTypes.oneOfType,
     shape = _react.PropTypes.shape;
 
 var Tribute = function (_Component) {
@@ -60,10 +61,16 @@ var Tribute = function (_Component) {
           options = _this$props.options;
 
 
+      var realOptions = _extends({}, options);
+
+      if (typeof options.menuContainer === 'function') {
+        realOptions.menuContainer = options.menuContainer();
+      }
+
       (customRef ? [customRef()] : _this.children).forEach(function (child) {
         var node = _reactDom2['default'].findDOMNode(child);
 
-        var t = new _tributejs2['default'](_extends({}, options));
+        var t = new _tributejs2['default'](_extends({}, realOptions));
 
         t.attach(node);
 
@@ -163,7 +170,8 @@ Tribute.propTypes = {
   options: shape({
     collections: arrayOf(arrayOf(object)),
     values: arrayOf(object),
-    lookup: func
+    lookup: func,
+    menuContainer: oneOfType([object, func])
   }).required
 };
 Tribute.defaultProps = {
