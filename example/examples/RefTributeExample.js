@@ -18,12 +18,11 @@ export default class RefTributeExample extends Component {
             <Tribute
               options={{
                 ...options,
-                menuContainer: () => { return this.refs.container; }
               }}
               customRef={() => { return this.refs.textarea; }}
             >
-              <div style={{ padding: '20px', backgroundColor: '#333', height: '100px', 'overflow': 'auto' }} ref="container">
-                <div>
+              <div>
+                <div style={{ padding: '20px', backgroundColor: '#333', height: '100px', 'overflow': 'auto' }} ref="container">
                   <textarea ref="textarea" placeholder="Try to @mention someone…" style={{ height: '250px' }}></textarea>
                 </div>
               </div>

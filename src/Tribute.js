@@ -58,7 +58,13 @@ export default class Tribute extends Component {
     };
 
     if (typeof options.menuContainer === 'function') {
-      realOptions.menuContainer = ReactDOM.findDOMNode(options.menuContainer());
+      const node = options.menuContainer();
+
+      if (node instanceof Component) {
+        realOptions.menuContainer = ReactDOM.findDOMNode(node);
+      } else {
+        realOptions.menuContainer = node;
+      }
     }
 
     (customRef ? [customRef()] : this.children).forEach((child) => {
@@ -93,7 +99,9 @@ export default class Tribute extends Component {
         {
           React.Children.map(children, (element, index) => {
             return React.cloneElement(element, {
-              ref: (ref) => { this.children[index] = ref; }
+              ref: (ref) => {
+                this.children[index] = ref;
+              }
             })
           })
         }
