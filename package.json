@@ -4,7 +4,8 @@
   "description": "React component for mentioning using Zurb's Tribute library",
   "main": "dist/index.js",
   "scripts": {
-    "run": "babel src -d dist && babel example/example.js --out-file example/index.js",
+    "run": "babel src -d dist && npm run build:example",
+    "build:example": "webpack",
     "//": "you can also run `npm run test -- -w` to watch",
     "test": "mocha --require test/config.js --recursive test/spec",
     "dev:hot": "webpack-dev-server --hot --inline --progress --colors --watch --display-error-details --display-cached --content-base ./example"
