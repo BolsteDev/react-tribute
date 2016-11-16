@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import TextArea from 'react-textarea-autosize';
 
 import options from './options';
@@ -32,11 +31,7 @@ export default class RefTributeExample extends Component {
             <div className="callout">
               <pre>
               {
-`import ReactDOM from 'react-dom';
-
-// ...
-
-<Tribute
+`<Tribute
   options={{
     ...options,
     menuContainer: () => { return this.refs.container; }
