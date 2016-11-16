@@ -20,9 +20,9 @@ var _tributejs = require('tributejs');
 
 var _tributejs2 = _interopRequireDefault(_tributejs);
 
-var _deepequal = require('deepequal');
+var _deepEqual = require('deep-equal');
 
-var _deepequal2 = _interopRequireDefault(_deepequal);
+var _deepEqual2 = _interopRequireDefault(_deepEqual);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -114,7 +114,7 @@ var Tribute = function (_Component) {
     key: 'shouldComponentUdpdate',
     value: function () {
       function shouldComponentUdpdate(nextProps) {
-        return !(0, _deepequal2['default'])(nextProps, this.props);
+        return !(0, _deepEqual2['default'])(nextProps, this.props);
       }
 
       return shouldComponentUdpdate;

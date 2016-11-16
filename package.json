@@ -1,6 +1,6 @@
 {
   "name": "react-tribute",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React component for mentioning using Zurb's Tribute library",
   "main": "dist/index.js",
   "scripts": {
@@ -12,9 +12,7 @@
   },
   "author": "Ivan Montiel <imontiel@bolste.com> (https://github.com/imontiel)",
   "license": "MIT",
-  "dependencies": {
-    "tributejs": "^2.0.6"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-loader": "^6.2.7",
@@ -25,7 +23,7 @@
     "babel-register": "^6.18.0",
     "chai": "^3.5.0",
     "chai-enzyme": "^0.6.0",
-    "deepequal": "^0.0.1",
+    "deep-equal": "^1.0.1",
     "enzyme": "^2.6.0",
     "faker": "^3.1.0",
     "jsdom": "8.2.0",
@@ -34,11 +32,14 @@
     "react-addons-test-utils": "^15.3.2",
     "react-dom": "^15.0.0",
     "react-textarea-autosize": "^4.0.5",
+    "tributejs": "^2.1.0",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
   },
   "peerDependencies": {
+    "deep-equal": "^1.0.1",
     "react": "^15.0.0",
-    "react-dom": "^15.0.0"
+    "react-dom": "^15.0.0",
+    "tributejs": "^2.1.0"
   }
 }

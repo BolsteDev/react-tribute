@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import TributeJS from 'tributejs';
-import deepEqual from 'deepequal';
+import deepEqual from 'deep-equal';
 
 const { arrayOf, func, node, object, shape } = PropTypes;
 
