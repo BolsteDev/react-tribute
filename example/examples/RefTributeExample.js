@@ -19,7 +19,7 @@ export default class RefTributeExample extends Component {
             <Tribute
               options={{
                 ...options,
-                menuContainer: () => { return ReactDOM.findDOMNode(this.refs.container); }
+                menuContainer: () => { return this.refs.container; }
               }}
               customRef={() => { return this.refs.textarea; }}
             >
@@ -39,7 +39,7 @@ export default class RefTributeExample extends Component {
 <Tribute
   options={{
     ...options,
-    menuContainer: () => { return ReactDOM.findDOMNode(this.refs.container); }
+    menuContainer: () => { return this.refs.container; }
   }}
   customRef={() => { return this.refs.textarea; }}
 >

@@ -58,7 +58,7 @@ export default class Tribute extends Component {
     };
 
     if (typeof options.menuContainer === 'function') {
-      realOptions.menuContainer = options.menuContainer();
+      realOptions.menuContainer = ReactDOM.findDOMNode(options.menuContainer());
     }
 
     (customRef ? [customRef()] : this.children).forEach((child) => {

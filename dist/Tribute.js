@@ -64,7 +64,7 @@ var Tribute = function (_Component) {
       var realOptions = _extends({}, options);
 
       if (typeof options.menuContainer === 'function') {
-        realOptions.menuContainer = options.menuContainer();
+        realOptions.menuContainer = _reactDom2['default'].findDOMNode(options.menuContainer());
       }
 
       (customRef ? [customRef()] : _this.children).forEach(function (child) {
