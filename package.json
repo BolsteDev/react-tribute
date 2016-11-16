@@ -12,6 +12,10 @@
   },
   "author": "Ivan Montiel <imontiel@bolste.com> (https://github.com/imontiel)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bolste/react-tribute.git"
+  },
   "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.18.0",
