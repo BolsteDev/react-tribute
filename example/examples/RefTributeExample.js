@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import TextArea from 'react-textarea-autosize';
 
 import options from './options';
@@ -13,24 +14,38 @@ export default class RefTributeExample extends Component {
             <h3>Tribute on nested textareas:</h3>
             <p>If you have a nested textarea, you can use custom ref to indicate
               which component to bind to.</p>
-            <Tribute options={options} customRef={() => { return this.refs.textarea; }}>
-              <div style={{ padding: '20px', backgroundColor: '#333' }}>
+            <p>If your container can scroll, you can supply a function that uses
+            the ref to your container.</p>
+            <Tribute
+              options={{
+                ...options,
+                menuContainer: () => { return ReactDOM.findDOMNode(this.refs.container); }
+              }}
+              customRef={() => { return this.refs.textarea; }}
+            >
+              <div style={{ padding: '20px', backgroundColor: '#333', height: '100px', 'overflow': 'auto' }} ref="container">
                 <div>
-                  <TextArea ref="textarea" placeholder="Try to @mention someone…"></TextArea>
+                  <textarea ref="textarea" placeholder="Try to @mention someone…" style={{ height: '250px' }}></textarea>
                 </div>
               </div>
             </Tribute>
             <div className="callout">
               <pre>
               {
-`import TextArea from 'react-textarea-autosize';
+`import ReactDOM from 'react-dom';
 
 // ...
 
-<Tribute options={options} customRef={() => { return this.refs.textarea; }}>
-  <div style={{ padding: '20px', backgroundColor: '#333' }}>
+<Tribute
+  options={{
+    ...options,
+    menuContainer: () => { return ReactDOM.findDOMNode(this.refs.container); }
+  }}
+  customRef={() => { return this.refs.textarea; }}
+>
+  <div style={{ padding: '20px', backgroundColor: '#333', height: '100px', 'overflow': 'auto' }} ref="container">
     <div>
-      <TextArea ref="textarea"></TextArea>
+      <textarea ref="textarea" placeholder="Try to @mention someone…" style={{ height: '250px' }}></textarea>
     </div>
   </div>
 </Tribute>

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import TributeJS from 'tributejs';
 import deepEqual from 'deep-equal';
 
-const { arrayOf, func, node, object, shape } = PropTypes;
+const { arrayOf, func, node, object, oneOfType, shape } = PropTypes;
 
 export default class Tribute extends Component {
   static propTypes = {
@@ -14,6 +14,7 @@ export default class Tribute extends Component {
       collections: arrayOf(arrayOf(object)),
       values: arrayOf(object),
       lookup: func,
+      menuContainer: oneOfType([object, func]),
     }).required,
   }
 
@@ -52,11 +53,19 @@ export default class Tribute extends Component {
   bindToChildren = () => {
     const { customRef, options } = this.props;
 
+    const realOptions = {
+      ...options
+    };
+
+    if (typeof options.menuContainer === 'function') {
+      realOptions.menuContainer = options.menuContainer();
+    }
+
     (customRef ? [customRef()] : this.children).forEach((child) => {
       const node = ReactDOM.findDOMNode(child);
 
       const t = new TributeJS({
-        ...options,
+        ...realOptions,
       });
 
       t.attach(node);

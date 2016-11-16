@@ -30,9 +30,10 @@ You can simply wrap any textarea, input, or contenteditable element with Tribute
 
 The `Tribute` component will bind tributejs to the textarea that you pass it as children.
 
-The `Tribute` component takes all options that [zurb/tribute](https://github.com/zurb/tribute) expects.
+The `Tribute` component takes all options that [zurb/tribute](https://github.com/zurb/tribute) expects. The only
+exception is that you can provide a function to the `menuContainer` option that returns a DOM node.
 
-For more advanced usage, such as `customRefs` and the `onChange` callback, see the [Github Pages](https://bolstedev.github.io/react-tribute).
+For more advanced usage, such as `menuContainer`, `customRefs`, and the `onChange` callback, see the [Github Pages](https://bolstedev.github.io/react-tribute).
 
 ## Testing
 
