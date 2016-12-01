@@ -12,7 +12,7 @@ export default class CustomTributeExample extends Component {
           <div className="callout large">
             <h3>Tribute on custom textareas:</h3>
             <Tribute options={options}>
-              <TextArea placeholder="Try to @mention someone…"></TextArea>
+              <TextArea maxRows={2} placeholder="Try to @mention someone…"></TextArea>
             </Tribute>
             <div className="callout">
               <pre>
@@ -22,7 +22,7 @@ export default class CustomTributeExample extends Component {
 // ...
 
 <Tribute options={options}>
-  <TextArea></TextArea>
+  <TextArea maxRows={2}></TextArea>
 </Tribute>
 `
               }

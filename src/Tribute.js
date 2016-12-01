@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import TributeJS from 'tributejs';
-import deepEqual from 'deepequal';
+import deepEqual from 'deep-equal';
 
-const { arrayOf, func, node, object, shape } = PropTypes;
+const { arrayOf, func, node, object, oneOfType, shape } = PropTypes;
 
 export default class Tribute extends Component {
   static propTypes = {
@@ -14,6 +14,7 @@ export default class Tribute extends Component {
       collections: arrayOf(arrayOf(object)),
       values: arrayOf(object),
       lookup: func,
+      menuContainer: oneOfType([object, func]),
     }).required,
   }
 
@@ -52,11 +53,25 @@ export default class Tribute extends Component {
   bindToChildren = () => {
     const { customRef, options } = this.props;
 
+    const realOptions = {
+      ...options
+    };
+
+    if (typeof options.menuContainer === 'function') {
+      const node = options.menuContainer();
+
+      if (node instanceof Component) {
+        realOptions.menuContainer = ReactDOM.findDOMNode(node);
+      } else {
+        realOptions.menuContainer = node;
+      }
+    }
+
     (customRef ? [customRef()] : this.children).forEach((child) => {
-      const node = ReactDOM.findDOMNode(child);
+      const node = child instanceof Component ? ReactDOM.findDOMNode(child) : child;
 
       const t = new TributeJS({
-        ...options,
+        ...realOptions,
       });
 
       t.attach(node);
@@ -84,7 +99,9 @@ export default class Tribute extends Component {
         {
           React.Children.map(children, (element, index) => {
             return React.cloneElement(element, {
-              ref: (ref) => { this.children[index] = ref; }
+              ref: (ref) => {
+                this.children[index] = ref;
+              }
             })
           })
         }

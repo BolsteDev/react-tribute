@@ -20,9 +20,9 @@ var _tributejs = require('tributejs');
 
 var _tributejs2 = _interopRequireDefault(_tributejs);
 
-var _deepequal = require('deepequal');
+var _deepEqual = require('deep-equal');
 
-var _deepequal2 = _interopRequireDefault(_deepequal);
+var _deepEqual2 = _interopRequireDefault(_deepEqual);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -38,6 +38,7 @@ var arrayOf = _react.PropTypes.arrayOf,
     func = _react.PropTypes.func,
     node = _react.PropTypes.node,
     object = _react.PropTypes.object,
+    oneOfType = _react.PropTypes.oneOfType,
     shape = _react.PropTypes.shape;
 
 var Tribute = function (_Component) {
@@ -60,10 +61,22 @@ var Tribute = function (_Component) {
           options = _this$props.options;
 
 
-      (customRef ? [customRef()] : _this.children).forEach(function (child) {
-        var node = _reactDom2['default'].findDOMNode(child);
+      var realOptions = _extends({}, options);
 
-        var t = new _tributejs2['default'](_extends({}, options));
+      if (typeof options.menuContainer === 'function') {
+        var _node = options.menuContainer();
+
+        if (_node instanceof _react.Component) {
+          realOptions.menuContainer = _reactDom2['default'].findDOMNode(_node);
+        } else {
+          realOptions.menuContainer = _node;
+        }
+      }
+
+      (customRef ? [customRef()] : _this.children).forEach(function (child) {
+        var node = child instanceof _react.Component ? _reactDom2['default'].findDOMNode(child) : child;
+
+        var t = new _tributejs2['default'](_extends({}, realOptions));
 
         t.attach(node);
 
@@ -114,7 +127,7 @@ var Tribute = function (_Component) {
     key: 'shouldComponentUdpdate',
     value: function () {
       function shouldComponentUdpdate(nextProps) {
-        return !(0, _deepequal2['default'])(nextProps, this.props);
+        return !(0, _deepEqual2['default'])(nextProps, this.props);
       }
 
       return shouldComponentUdpdate;
@@ -163,7 +176,8 @@ Tribute.propTypes = {
   options: shape({
     collections: arrayOf(arrayOf(object)),
     values: arrayOf(object),
-    lookup: func
+    lookup: func,
+    menuContainer: oneOfType([object, func])
   }).required
 };
 Tribute.defaultProps = {
