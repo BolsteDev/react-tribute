@@ -36,7 +36,7 @@
     "react-addons-test-utils": "^15.3.2",
     "react-dom": "^15.0.0",
     "react-textarea-autosize": "^4.0.5",
-    "tributejs": "^2.1.0",
+    "tributejs": "^2.2.0",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
   },
@@ -44,6 +44,6 @@
     "deep-equal": "^1.0.1",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
-    "tributejs": "^2.2.0"
+    "tributejs": "^2.1.0"
   }
 }
