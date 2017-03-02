@@ -44,6 +44,6 @@
     "deep-equal": "^1.0.1",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
-    "tributejs": "^2.1.0"
+    "tributejs": "^2.2.0"
   }
 }
