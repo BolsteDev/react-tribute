@@ -1,6 +1,6 @@
 {
   "name": "react-tribute",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "React component for mentioning using Zurb's Tribute library",
   "main": "dist/index.js",
   "scripts": {
