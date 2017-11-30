@@ -16,7 +16,9 @@
     "type": "git",
     "url": "git://github.com/bolste/react-tribute.git"
   },
-  "dependencies": {},
+  "dependencies": {
+    "prop-types": "^15.6.0"
+  },
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-loader": "^6.2.7",
