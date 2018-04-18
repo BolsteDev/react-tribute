@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import TributeJS from 'tributejs';
 import deepEqual from 'deep-equal';
@@ -15,7 +16,7 @@ export default class Tribute extends Component {
       values: arrayOf(object),
       lookup: func,
       menuContainer: oneOfType([object, func]),
-    }).required,
+    }).isRequired,
   }
 
   static defaultProps = {
